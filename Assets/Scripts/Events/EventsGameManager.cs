@@ -9,6 +9,7 @@ public class EventsGameManager : MonoBehaviour
     public delegate void OnEscapeKeyPressed();
     public static OnEscapeKeyPressed onEscapeKeyPressed;
 
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)) {

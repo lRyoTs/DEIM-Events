@@ -11,6 +11,14 @@ public class EventsSFX : MonoBehaviour
     private void Awake()
     {
         StopParticleSystem();
+        EventsGameManager.onEnterKeyPressed += StartParticleSystem;
+        EventsGameManager.onEscapeKeyPressed += StopParticleSystem;
+    }
+
+    private void OnDisable()
+    {
+        EventsGameManager.onEnterKeyPressed -= StartParticleSystem;
+        EventsGameManager.onEscapeKeyPressed -= StopParticleSystem;
     }
 
     private void StartParticleSystem()

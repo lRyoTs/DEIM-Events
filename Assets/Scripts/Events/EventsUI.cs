@@ -13,6 +13,14 @@ public class EventsUI : MonoBehaviour
     private void Awake()
     {
         InitializeText();
+        EventsGameManager.onEnterKeyPressed += UpdateText;
+        EventsGameManager.onEscapeKeyPressed += InitializeText;
+    }
+
+    private void OnDisable()
+    {
+        EventsGameManager.onEnterKeyPressed -= UpdateText;
+        EventsGameManager.onEscapeKeyPressed -= InitializeText;
     }
 
     private void InitializeText()

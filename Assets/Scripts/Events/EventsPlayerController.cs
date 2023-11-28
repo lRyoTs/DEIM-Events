@@ -24,12 +24,20 @@ public class EventsPlayerController : MonoBehaviour
         Instance = this;
 
         originalColor = spriteRenderer.color;
-        
+
+        EventsGameManager.onEnterKeyPressed += ChangeColorToGreen;
+        EventsGameManager.onEscapeKeyPressed += ChangeColorToOriginal;
     }
 
     private void Start()
     {
         enemy = FindObjectOfType<EventsEnemy>().gameObject.transform; // There is a unique enemy in the Scene
+    }
+
+    private void OnDisable()
+    {
+        EventsGameManager.onEnterKeyPressed -= ChangeColorToGreen;
+        EventsGameManager.onEscapeKeyPressed -= ChangeColorToOriginal;   
     }
 
     public float DistanceToEnemy()

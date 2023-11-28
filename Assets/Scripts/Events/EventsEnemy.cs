@@ -24,6 +24,14 @@ public class EventsEnemy : MonoBehaviour
     {
         canMove = true;
         nextPosition = startPosition;
+        EventsGameManager.onEnterKeyPressed += StopMovement;
+        EventsGameManager.onEscapeKeyPressed += RestartMovement;
+    }
+
+    private void OnDisable()
+    {
+        EventsGameManager.onEnterKeyPressed -= StopMovement;
+        EventsGameManager.onEscapeKeyPressed -= RestartMovement;
     }
 
     private void Update()
